@@ -5,3 +5,38 @@ body {
 footer  {
     padding-top: 20px;
 }
+
+
+/* img {
+    width: 1px;
+    height: 200px;
+} */
+
+
+.btn-green {
+    background-color: #32CD32 !important;
+}
+
+.btop {
+    border-top: 6px solid #06ac7a !important;
+}
+
+.text-light-grey {
+    color: #8f8e8e;
+}
+
+.news{
+    width: 100%;
+    height:100%;
+    /* background-color: rgb(221, 247, 221); */
+}
+
+
+.news_item{
+    width: 250px; 
+    
+}
+
+.font-sm{
+    font-size: small;
+}
