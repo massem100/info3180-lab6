@@ -49,11 +49,11 @@ const NewsList = Vue.component('news-list', {
       <h2> News </h2> 
       <ul class = "news__list d-flex flex-row flex-wrap p-3 mb-3 justify-content-center">
         <li v-for='article in articles' class = "box-shadow news_item border btop p-3 mb-4 mr-3 ml-2 col-md-3 d-flex flex-column rounded"> 
-         <h6 class = "font-weight-bold" >{{ article.title}} </h6> <img class = "w-100 h-50 ml-0 mr-0 mt-2 mb-2 justify-content-center" :src= "article.urlToImage"/> 
+         <h6 class = "font-weight-bold" >{{ article.title}} </h6> <img class = "w-100 h-50 ml-0 mr-0 mt-2 mb-2 justify-content-center" src= "/static/images/placeholder.png"/> 
          <span class = " mb-5 font-sm">{{ article.description}}</span></li>
-       
+        
       </ul>
-    
+    <!-- A placeholder image is added in place of article.urlToImage which was returning null from the api -->
     </div> 
 
     <div class = "form-group mx-sm-3 mb-2 form-inline d-flex justify-content-center">
@@ -95,7 +95,7 @@ const NewsList = Vue.component('news-list', {
       searchNews: function () {
           let self = this;
           fetch('https://newsapi.org/v2/everything?q=' +
-                  self.searchTerm + '&language=en&apiKey=<api-key>')
+            self.searchTerm + '&language=en&apiKey=<api-key>')
               .then(function (response) {
                   return response.json();
               })
