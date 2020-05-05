@@ -45,24 +45,30 @@ const NewsList = Vue.component('news-list', {
 
   template:  `
   <div> 
+    <h2> News </h2> 
+    <div class = "form-group mx-sm-3 mb-2 form-inline d-flex flex-column justify-content-center">
+              
+              <p class  = "m-2  ">You are searching for {{ searchTerm }}</p> 
+              <div class = "d-flex flew-row">
+                <label class = "sr-only" for= "search"> Search </label> 
+                <input type="search" name="search" v-model ="searchTerm" id = "search" class = "form-control mb-2 mr-sm-2" 
+                placeholder = "Enter search term here "/> 
+                <button class="btn btn-primary mt-2 mb-2" @click=searchNews >Search</button>
+              </div>
+              
+    </div>
     <div class = "news">
-      <h2> News </h2> 
+      
       <ul class = "news__list d-flex flex-row flex-wrap p-3 mb-3 justify-content-center">
         <li v-for='article in articles' class = "box-shadow news_item border btop p-3 mb-4 mr-3 ml-2 col-md-3 d-flex flex-column rounded"> 
-         <h6 class = "font-weight-bold" >{{ article.title}} </h6> <img class = "w-100 h-50 ml-0 mr-0 mt-2 mb-2 justify-content-center" src= "/static/images/placeholder.png"/> 
+         <h6 class = "font-weight-bold" >{{ article.title}} </h6> 
+         <img class = "w-100 h-50 ml-0 mr-0 mt-2 mb-2 justify-content-center" :src=" article.urlToImage ? article.urlToImage : '/static/images/placeholder.png'" :key = article.urlToImage />
          <span class = " mb-5 font-sm">{{ article.description}}</span></li>
-        
       </ul>
-    <!-- A placeholder image is added in place of article.urlToImage which was returning null from the api -->
+  
     </div> 
 
-    <div class = "form-group mx-sm-3 mb-2 form-inline d-flex justify-content-center">
-            <label class = "sr-only" for= "search"> Search </label> 
-            <input type="search" name="search" v-model ="searchTerm" id = "search" class = "form-control mb-2 mr-sm-2" 
-            placeholder = "Enter search term here "/> 
-            <button class="btn btn-primary mt-2 mb-2" @click=searchNews >Search</button>
-    
-      </div> 
+   
       
   </div>       
   `, 
@@ -70,7 +76,7 @@ const NewsList = Vue.component('news-list', {
 
     let self = this;
 
-    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=<api-key>')
+    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=be69f4f4fc7a43778cf93649d6a6b22a')
     .then(function(response){
       return response.json(); 
     })
@@ -84,10 +90,12 @@ const NewsList = Vue.component('news-list', {
   data: function () {
     return {
       searchTerm: '',
-      articles: []
+      articles: [],
+     
+  }
     
       
-    }
+    
   },
 
   methods: {
@@ -95,16 +103,21 @@ const NewsList = Vue.component('news-list', {
       searchNews: function () {
           let self = this;
           fetch('https://newsapi.org/v2/everything?q=' +
-            self.searchTerm + '&language=en&apiKey=<api-key>')
+            self.searchTerm + '&language=en&apiKey=be69f4f4fc7a43778cf93649d6a6b22a')
               .then(function (response) {
                   return response.json();
               })
               .then(function (data) {
                   console.log(data);
                   self.articles = data.articles;
+                  
               });
-      }
-  }
+      },
+   
+
+  }, 
+  
+  
 });
 
 const Home = Vue.component('home', {
