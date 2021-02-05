@@ -41,11 +41,34 @@ Vue.component('app-footer', {
     }
 });
 
+const NewsCategories = Vue.component('new-categories', {
+  template: 
+  `
+  <div class ="m-100"> 
+    <div class = "m-50 p-100">
+      <h1 class ="welcome-heading "> Welcome to <span> News Central </span> </h1>
+      <p class ="text-center"> A simple approach to news telling.</p>
+    </div>
+    <div class = "grid-container"> 
+      <div class ="categories" id= "rec-1"> <h6> Text</h6></div>
+      <div class ="categories" id = "rec-2"> <h6> Text</h6></div>
+      <div class ="categories" id = "rec-3"> <h6> Text</h6></div>
+      <div class ="categories" id = "rec-4"> <h6> Text</h6></div>
+      <div class ="categories" id = "rec-5"> <h6> Text</h6></div>
+      <div class ="categories" id = "rec-6"> <h6> Text</h6></div>
+          
+    </div>
+
+  </div>
+  `
+
+});
+
 const NewsList = Vue.component('news-list', {
 
   template:  `
   <div> 
-    <h2> News </h2> 
+    <h1>News </h1>
     <div class = "form-group mx-sm-3 mb-2 form-inline d-flex flex-column justify-content-center">
               
               <p class  = "m-2  ">You are searching for {{ searchTerm }}</p> 
@@ -123,10 +146,13 @@ const NewsList = Vue.component('news-list', {
 const Home = Vue.component('home', {
   template: `
 
-  <div> 
-    <img src="/static/images/logo.png" alt="VueJS Logo">
-    <h1>{{ welcome }}</h1>
-  
+  <div class =" foundation  d-flex flex-column "> 
+   <div class = "d-flex w-100 h-100 flex-column justify-content-center"> 
+    <h1 class = "welcome-heading text-center"> Welcome to <span> News Central</span></h1>
+    <p class ="text-center"> A simple approach to news telling.</p>
+    
+    </div>
+    <div class = "scroll-wheel"> <div class ="" id ="scroll-circle"></div></div>
   </div>
   `, 
   data: function () {
@@ -140,7 +166,8 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: Home },
-    { path: '/news', component: NewsList }
+    { path: '/news', component: NewsList }, 
+    { path: '/choosecategories', component: NewsCategories }
   ]
 });
 
