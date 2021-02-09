@@ -44,23 +44,40 @@ Vue.component('app-footer', {
 const NewsCategories = Vue.component('new-categories', {
   template: 
   `
-  <div class ="m-100"> 
-    <div class = "m-50 p-100">
-      <h1 class ="welcome-heading "> Welcome to <span> News Central </span> </h1>
+  <div class =""> 
+    <div class = "mt-4 pt-2 ">
+      <h1 class ="text-center font-weight-bold heading"> Welcome to <span class =""> News Central </span> </h1>
       <p class ="text-center"> A simple approach to news telling.</p>
     </div>
-    <div class = "grid-container"> 
-      <div class ="categories" id= "rec-1"> <h6> Text</h6></div>
-      <div class ="categories" id = "rec-2"> <h6> Text</h6></div>
-      <div class ="categories" id = "rec-3"> <h6> Text</h6></div>
-      <div class ="categories" id = "rec-4"> <h6> Text</h6></div>
-      <div class ="categories" id = "rec-5"> <h6> Text</h6></div>
-      <div class ="categories" id = "rec-6"> <h6> Text</h6></div>
-          
+    <div class = "d-flex justify-content-center align-items-center" > 
+      <div class = "grid-container_c "> 
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+        <div class ="categories"> <h6> Text</h6></div>
+            
+      </div>
+    </div>
+    <div> 
+      <p>Choose four (4) of your favourite categories</p>
+      <button><span> NEXT </span> </button>
     </div>
 
   </div>
-  `
+  `,data: function () {
+    return {
+      categories: '',
+    }
+  },
+  created: function () {
+    
+      console.log(document.getElementsByClassName("grid-container"));
+    
+  }
 
 });
 
